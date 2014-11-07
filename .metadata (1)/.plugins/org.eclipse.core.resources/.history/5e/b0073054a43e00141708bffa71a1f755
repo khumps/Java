@@ -1,0 +1,6 @@
+
+public class BankTest {
+
+	BankAccount kevin = new BankAccount();
+	BankAccount khumps = new BankAccount(5000);
+}

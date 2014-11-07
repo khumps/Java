@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+
+
+public class Statistics
+{
+	
+	public static double[] copyData(double[] data)
+	{
+		double[] dest = new double[data.length];
+		for(int i = 0; i < data.length; i++)
+		{
+			dest[i] = data[i];
+		}
+		return dest;
+	}
+	public static double[] sortData(double[] data)
+			{
+		double[] sorted = copyData(data);
+		for(int inner = 0; inner < sorted.length; inner++)
+			{
+			for(int outer = inner +1; outer < sorted.length; outer++)
+				{
+				if(sorted[inner] > sorted[outer])
+					{
+					double temp = sorted[inner];
+					sorted[inner] = sorted[outer];
+					sorted[outer] = temp;
+				}
+			}
+			
+		}
+		return sorted;
+	}
+	
+	public static double mean(double[] data)
+	{
+		double mean = 0;
+		for(int i = 0; i < data.length; i++)
+		{
+			mean += data[i];
+		}
+		return mean /= data.length;
+	}
+	
+	
+	
+    public static String arrayToString(double[] a){
+	String s = "";
+	for(double n: a)
+		s += n + " ";
+	return s;
+}
+    
+    public static double min(double[] data)
+    {
+    	if(data.length == 0)
+    		return Double.NaN;
+    	double[] sorted = copyData(data);
+    	double min = sorted[0];
+    	for(int i = 1; i < sorted.length; i++)
+    		if(data[i] < min)
+    			min = data[i];
+    	return min;
+    }
+    
+    public static double max(double[] data)
+    {
+    	if(data.length == 0)
+    		return Double.NaN;
+    	double[] sorted = copyData(data);
+    	double max = sorted[0];
+    	for(int i = 1; i < sorted.length; i++)
+    		if(data[i] > max)
+    			max = data[i];
+    	return max;
+    }
+    
+    public static double range(double[] data)
+    {
+    	if(data.length == 0)
+    		return Double.NaN;
+    	double[] dataCopy = copyData(data);
+    	return max(dataCopy) - min(dataCopy);
+    }
+    
+    public static double median(double[] data)
+    {
+    	if(data.length == 0)
+    		return Double.NaN;
+    	double[] copy = dataCopy(data);
+    	
+    }
+	
+	public static void main(String[] args)
+	{
+		double[] test = {32,43,123,3,1,5,2,1,6,24,6,3,2,2,4,65,2};
+		double[] copy = copyData(test);
+		System.out.println(arrayToString(test));
+		System.out.println(arrayToString(copy));
+		System.out.println(arrayToString(sortData(copy)));
+		System.out.println((min(copy)));
+		System.out.println((max(copy)));
+		System.out.println((range(copy)));
+	}
+}

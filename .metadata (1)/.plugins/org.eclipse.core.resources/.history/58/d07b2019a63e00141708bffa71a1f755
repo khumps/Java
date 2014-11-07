@@ -1,0 +1,38 @@
+/*
+ * Create and manage bank accounts
+ */
+public class BankAccount {
+	
+	private double balance; //Balance of the bank account
+
+	public BankAccount() //Used to create a new BankAccount with a balance of 0
+	{
+		this.balance = 0;
+	}
+	
+	public BankAccount(double balance) //Used ti create a bew BankAccount with a balance of balance
+	{
+		this.balance = balance;
+	}
+	
+	public void deposit(double deposit)
+	{
+		this.balance += deposit;
+	}
+	
+	public void withdraw(double withdraw)
+	{
+		this.balance -= withdraw;
+	}
+	
+	public double getBal()
+	{
+		return this.balance;
+	}
+	
+	public void transfer(double amt, BankAccount recieve)
+	{
+		this.balance -= amt;
+		recieve.balance += amt;
+	}
+}

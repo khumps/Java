@@ -1,0 +1,41 @@
+
+public class SimulationTest {
+	private static final double DELTAT = .01;
+	private static final double GRAVITY = 9.81;
+
+	public static double updateVelocity(double currentVelocity)
+	{
+	return currentVelocity - (GRAVITY * DELTAT);
+	}
+	
+	public static double updateHeight(double currentHeight, double currentVelocity)
+	{
+	return currentHeight + (currentVelocity * DELTAT);
+	}
+	
+	public static void simulation(double initialVelocity)
+	{
+		double time = 0;
+		double initialHeight = 0;
+		double currentHeight = initialHeight;
+		double currentVelocity = initialVelocity;
+		System.out.printf("%-6s %20s %18s %n", "Time", "Velocity Velocity", "Current Height");
+		System.out.printf("%-10.2f %-20.2f %-20.2f %n", time, initialVelocity, currentHeight);
+		do{
+				for(int i = 0; i < 101; i++){
+			currentVelocity = updateVelocity(currentVelocity);
+			currentHeight = updateHeight(currentHeight, currentVelocity);
+					}
+			time++;
+			if(currentHeight > 0)
+			System.out.printf("%-10.2f %-20.2f %-20.2f %n", time, currentVelocity, currentHeight);
+
+	}while(currentHeight >  0);
+	}
+
+	public static void main(String[] args) {
+		simulation(100);
+
+	}
+
+}

@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+
+public class Statistics
+{
+	public static double[] sortData(double[] data)
+			{
+		for(int inner = 0; inner < a.length; inner++)
+			{
+			for(int outer = inner +1; outer < a.length; outer++)
+				{
+				if(a[inner] > a[outer])
+					{
+					int temp = a[inner];
+					a[inner] = a[outer];
+					a[outer] = temp;
+				}
+			}
+			
+		}
+	}
+}

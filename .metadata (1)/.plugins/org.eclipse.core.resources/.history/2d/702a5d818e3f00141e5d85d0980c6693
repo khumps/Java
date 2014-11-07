@@ -1,0 +1,48 @@
+
+public class Fraction {
+
+	private int numerator;
+	private int denominator;
+	
+	public Fraction(int numerator, int denominator)
+	{
+		this.numerator = numerator;
+		this.denominator = denominator;
+		
+	}
+	
+	public Fraction(int numerator)
+	{
+		this.numerator = numerator;
+		this.denominator = 1;
+	}
+	
+	public String toString()
+	{
+		String fraction = numerator + "/" + denominator;
+		return fraction;
+	}
+	
+	public Fraction add(Fraction fraction)
+	{
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		int newNumerator = top1 + top2;
+		int newDenominator = bottom1 + bottom2;
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		return newFraction;
+	}
+	
+	public Fraction subtract(Fraction fraction)
+	{
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		int newNumerator = top1 - top2;
+		int newDenominator = bottom1 - bottom2;
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		return newFraction;
+}

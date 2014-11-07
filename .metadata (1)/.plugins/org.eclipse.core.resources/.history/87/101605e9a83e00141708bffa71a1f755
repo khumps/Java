@@ -1,0 +1,10 @@
+import java.util.Scanner;
+public class ATM {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Welcome to the ATM. Please enter your PIN");
+
+	}
+
+}

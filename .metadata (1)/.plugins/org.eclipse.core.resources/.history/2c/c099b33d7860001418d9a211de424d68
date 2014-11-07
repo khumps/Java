@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class SortString
+	{
+	public static void sortStrings(ArrayList<String> a)
+		{
+		for(int inner = 0; inner < a.size(); inner++)
+			{
+			for(int outer = inner +1; outer < a.size(); outer++)
+				{
+				if(a.get(inner).compareTo(a.get(outer)) == 1)
+					{
+					a.set(outer, a.set(inner, a.get(outer)));
+				}
+			}
+			
+		}
+	}
+	public static void main(String[] arrgs)
+	{
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("a");
+		a.add("c");
+		a.add("e");
+		a.add("b");
+		a.add("d");
+		a.add("f");
+	}
+}

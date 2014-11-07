@@ -1,0 +1,219 @@
+
+public class MixedNumber {
+	
+	private int numerator;		//Numerator of the MixedNumber
+	private int denominator;	//Denominator of the MixedNumber
+	private int whole;			//Whole Number of the MixedNumber
+	private int opNumerator;	//Numerator of the MixedNumber as an improper fraction
+	private int opDenominator;	//Denominator of the MixedNumber as an improper fraction
+	
+	/*
+	 * Creates a MixedNumber given a mixed number
+	 */
+	public MixedNumber(int whole, int numerator, int denominator) 
+	{
+		this.whole = whole;
+		this.numerator = numerator;
+		this.denominator = denominator;
+		this.opNumerator = (whole * denominator) + numerator;
+		this.opDenominator = denominator;
+	}
+	
+	/*
+	 * Creates a MixedNumber given an improper fraction
+	 */
+	public MixedNumber(int numerator, int denominator)
+	{
+		this.whole = numerator / denominator;
+		this.numerator = numerator % denominator;
+		this.denominator = denominator;
+		this.opNumerator = numerator;
+		this.opDenominator = denominator;
+	}
+	
+	/*
+	 * Creates a MixedNumber given a whole number
+	 */
+	public MixedNumber(int whole){
+		
+		this.whole = whole;
+		this.numerator = 0;
+		this.denominator = 0;
+		this.opNumerator = whole;
+		this.opDenominator = 1;
+	}
+	
+	/*
+	 * Creates a MixedNumber given a fraction object
+	 */
+	public MixedNumber(Fraction fraction)
+	{
+		int gcd = Fraction.gcd(fraction.getNumerator(), fraction.getDenominator());
+		this.opNumerator = fraction.getNumerator() / gcd;
+		this.opDenominator = fraction.getDenominator() / gcd;
+		
+		this.whole = fraction.getNumerator() / fraction.getDenominator();
+		this.numerator = fraction.getNumerator() % fraction.getDenominator();
+		this.denominator = fraction.getDenominator();
+		gcd = Fraction.gcd(this.numerator, this.denominator);		
+		
+		this.numerator /= gcd;
+		this.denominator /= gcd;
+	}
+	
+	/*
+	 * Adds two MixedNumbers together and simplifies the result
+	 */
+	public MixedNumber addMixed(MixedNumber mixed)
+	{
+		int newNumerator;
+		int newDenominator;
+		int top1 = this.getOpNumerator();
+		int top2 = mixed.getOpNumerator();
+		int bottom1 = this.getOpDenominator();
+		int bottom2 = mixed.getOpDenominator();
+		if(bottom1 == bottom2)
+		{
+			newNumerator = top1 + top2;
+			newDenominator = bottom1;
+		}
+		else
+		{
+		newNumerator = (top1 * bottom2) + (top2 * bottom1);
+		newDenominator = bottom1 * bottom2;
+		}
+		MixedNumber newMixed =  new MixedNumber(newNumerator, newDenominator);
+		return newMixed;
+		
+	}
+
+	/*
+	 * Subtracts two MixedNumbers
+	 */
+	public MixedNumber subtractMixed(MixedNumber mixed)
+	{
+		int newNumerator;
+		int newDenominator;
+		int top1 = this.numerator;
+		int top2 = mixed.getNumerator();
+		int bottom1 = this.denominator;
+		int bottom2 = mixed.getDenominator();
+
+		newNumerator = (top1 * bottom2) - (top2 * bottom1);
+		newDenominator = bottom1 * bottom2;
+		
+		
+		MixedNumber newMixed =  new MixedNumber(newNumerator, newDenominator);
+		return newMixed;
+	}
+	
+	/*
+	 * Multiplies two MixedNumbers
+	 */
+	public MixedNumber multiplyMixed(MixedNumber mixed)
+	{
+		int top1 = this.opNumerator;
+		int top2 = mixed.getOpNumerator();
+		int bottom1 = this.opDenominator;
+		int bottom2 = mixed.getOpDenominator();
+		int newNumerator = top1 * top2;
+		int newDenominator = bottom1 * bottom2;
+		MixedNumber newMixed =  new MixedNumber(newNumerator, newDenominator);
+		return newMixed;
+		
+	}
+	
+	/*
+	 * Divides two MixedNumbers
+	 */
+	public MixedNumber divideMixed(MixedNumber mixed)
+	{
+		int top1 = this.opNumerator;
+		int top2 = mixed.getOpNumerator();
+		int bottom1 = this.opDenominator;
+		int bottom2 = mixed.getOpDenominator();
+		int newNumerator = top1 * bottom2;
+		int newDenominator = bottom1 * top2;
+		MixedNumber newMixed =  new MixedNumber(newNumerator, newDenominator);
+		return newMixed;
+		
+	}
+	
+	/*
+	 * Formats the MixedNumber
+	 */
+	public String toString()
+	{
+		return (whole + " " + numerator + "/" + denominator);
+	}
+
+	/**
+	 * @return the numerator
+	 */
+	public int getNumerator() {
+		return numerator;
+	}
+
+	/**
+	 * @param numerator the numerator to set
+	 */
+	public void setNumerator(int numerator) {
+		this.numerator = numerator;
+	}
+
+	/**
+	 * @return the denominator
+	 */
+	public int getDenominator() {
+		return denominator;
+	}
+
+	/**
+	 * @param denominator the denominator to set
+	 */
+	public void setDenominator(int denominator) {
+		this.denominator = denominator;
+	}
+
+	/**
+	 * @return the whole
+	 */
+	public int getWhole() {
+		return whole;
+	}
+
+	/**
+	 * @param whole the whole to set
+	 */
+	public void setWhole(int whole) {
+		this.whole = whole;
+	}
+
+	/**
+	 * @return the opNumerator
+	 */
+	public int getOpNumerator() {
+		return opNumerator;
+	}
+
+	/**
+	 * @param opNumerator the opNumerator to set
+	 */
+	public void setOpNumerator(int opNumerator) {
+		this.opNumerator = opNumerator;
+	}
+
+	/**
+	 * @return the opDenominator
+	 */
+	public int getOpDenominator() {
+		return opDenominator;
+	}
+
+	/**
+	 * @param opDenominator the opDenominator to set
+	 */
+	public void setOpDenominator(int opDenominator) {
+		this.opDenominator = opDenominator;
+	}
+}

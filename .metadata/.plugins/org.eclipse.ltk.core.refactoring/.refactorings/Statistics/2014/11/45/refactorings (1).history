@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;dest&apos; in &apos;Statistics.copyData(...)&apos; to &apos;copy&apos;&#x0D;&#x0A;- Original project: &apos;Statistics&apos;&#x0D;&#x0A;- Original element: &apos;Statistics.copyData(double[]).dest&apos;&#x0D;&#x0A;- Renamed element: &apos;dest&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;dest&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Statistics.java[Statistics~copyData~\[D@dest!108!147!117!120!\[D!0!false" name="copy" references="true" stamp="1415209601278" version="1.0"/>
+</session>

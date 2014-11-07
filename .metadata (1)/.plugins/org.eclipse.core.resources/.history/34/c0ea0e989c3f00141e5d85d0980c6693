@@ -1,0 +1,47 @@
+import java.util.Random;
+
+
+public class FractionTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random rand = new Random();
+		Fraction fraction1= new Fraction(7,8);
+		Fraction fraction2 = new Fraction(5,6);
+		Fraction fraction3 = new Fraction(rand.nextInt(),rand.nextInt());
+		
+		System.out.println(fraction1 + " + " + fraction2 + " = " + fraction1.addFractions(fraction2));
+		System.out.println(fraction1 + " + " + fraction1 + " = " + fraction1.addFractions(fraction1));
+		System.out.println(fraction1 + " + " + fraction3 + " = " + fraction1.addFractions(fraction3));
+		System.out.println(fraction1 + " - " + fraction1 + " = " + fraction1.subtractFractions(fraction1));
+		System.out.println(fraction1 + " - " + fraction2 + " = " + fraction1.subtractFractions(fraction2));
+		System.out.println(fraction1 + " - " + fraction3 + " = " + fraction1.subtractFractions(fraction3));
+		System.out.println(fraction1 + " * " + fraction2 + " = " + fraction1.multiplyFractions(fraction2));
+		System.out.println(fraction1 + " * " + fraction3 + " = " + fraction1.multiplyFractions(fraction3));
+		System.out.println(fraction1 + " / " + fraction2 + " = " + fraction1.divideFractions(fraction2));
+		System.out.println(fraction1 + " / " + fraction1 + " = " + fraction1.divideFractions(fraction2));
+		System.out.println(fraction1 + " / " + fraction2 + " = " + fraction1.divideFractions(fraction3));
+		System.out.println(fraction1 + " in decimal form is " + fraction1.toDecimal());
+		System.out.println(fraction1 + "'s recipricol is " + fraction1.recipricol());
+		int number1, number2;
+		number1 = 100;
+		number2 = 20;
+		
+		while(number1 != number2)
+		{
+			if(number1 > number2)
+			{
+				number1 = number1 - number2;
+			}
+			
+			else if( number1 < number2)
+			{
+				number2 = number2 - number1;
+			}
+		}
+		
+		System.out.println(number1);
+
+	}
+
+}

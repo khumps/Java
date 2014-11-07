@@ -1,0 +1,18 @@
+
+public class GCF {
+public GCF(double number1, double number2)
+{
+	while(number1 != number2)
+	{
+		if(number1 > number2)
+		{
+			number1 = number1 - number2;
+		}
+	}
+}
+
+public GCF(int number1, int number2)
+{
+	
+}
+}

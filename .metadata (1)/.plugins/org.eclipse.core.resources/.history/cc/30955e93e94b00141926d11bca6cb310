@@ -1,0 +1,182 @@
+/*
+ * Performs simple fraction equations and simplifies the result (broken)
+ */
+public class Fraction {
+
+	private int numerator;
+	private int denominator;
+	
+	public Fraction(int numerator, int denominator)
+	{
+		this.numerator = numerator;
+		this.denominator = denominator;
+		
+	}
+
+	public Fraction(int numerator, int denominator, boolean debug)
+	{
+		this.numerator = numerator;
+		this.denominator = denominator;
+	}
+	
+	public Fraction(int numerator)
+	{
+		this.numerator = numerator;
+		this.denominator = 1;
+	}
+	
+	public String toString()
+	{
+		String fraction = numerator + "/" + denominator;
+		return fraction;
+	}
+	
+	public Fraction addFractions(Fraction fraction)
+	{
+		int newNumerator;
+		int newDenominator;
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		if(bottom1 == bottom2)
+		{
+			newNumerator = top1 + top2;
+			newDenominator = bottom1;
+		}
+		else
+		{
+		newNumerator = (top1 * bottom2) + (top2 * bottom1);
+		newDenominator = bottom1 * bottom2;
+		}
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		
+		int gcf = newFraction.getGCF();
+		newNumerator = newNumerator / gcf;
+		newDenominator = newDenominator / gcf;
+		Fraction simplified = new Fraction(newNumerator, newDenominator);
+		return simplified;
+		
+	}
+	
+	public Fraction subtractFractions(Fraction fraction)
+	{
+		int newNumerator;
+		int newDenominator;
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		if(bottom1 == bottom2)
+		{
+			newNumerator = top1 - top2;
+			newDenominator = bottom1;
+		}
+		else
+		{
+		newNumerator = (top1 * bottom2) - (top2 * bottom1);
+		newDenominator = bottom1 * bottom2;
+		}
+		
+		
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		int gcf = newFraction.getGCF();
+		newNumerator = newNumerator / gcf;
+		newDenominator = newDenominator / gcf;
+		Fraction simplified = new Fraction(newNumerator, newDenominator);
+		return simplified;
+	}
+	
+	public Fraction multiplyFractions(Fraction fraction)
+	{
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		int newNumerator = top1 * top2;
+		int newDenominator = bottom1 * bottom2;
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		int gcf = newFraction.getGCF();
+		newNumerator = newNumerator / gcf;
+		newDenominator = newDenominator / gcf;
+		Fraction simplified = new Fraction(newNumerator, newDenominator);
+		return simplified;
+		
+	}
+	
+	public Fraction divideFractions(Fraction fraction)
+	{
+		int top1 = this.numerator;
+		int top2 = fraction.numerator;
+		int bottom1 = this.denominator;
+		int bottom2 = fraction.denominator;
+		int newNumerator = top1 * bottom2;
+		int newDenominator = bottom1 * top2;
+		Fraction newFraction =  new Fraction(newNumerator, newDenominator);
+		
+		int gcf = newFraction.getGCF();
+		newNumerator = newNumerator / gcf;
+		newDenominator = newDenominator / gcf;
+		Fraction simplified = new Fraction(newNumerator, newDenominator);
+		return simplified;
+		
+	}
+	
+	
+	public double toDecimal()
+	{
+		return (double)this.numerator / this.denominator;
+	}
+	
+	public Fraction recipricol()
+	{
+		Fraction recipricol = new Fraction(this.denominator, this.numerator);
+		return recipricol;
+	}
+	
+	public int getGCF()
+	{
+		int numerator;
+		int denominator;
+		numerator = this.numerator;
+		denominator = this.denominator;
+		
+
+
+				if(denominator > numerator && ((denominator & numerator) != 0))
+				{
+					int mod = denominator % numerator;
+					denominator /= mod;
+					numerator /= mod;
+				}
+				
+				else if(denominator < numerator && ((denominator & numerator) != 0))
+				{
+					int mod2 = numerator % denominator;
+					numerator /= mod2;
+				}
+				else
+			
+				return denominator;
+				return denominator;
+			
+	}
+	/**
+	 * @return the numerator
+	 */
+	public int getNumerator() {
+		return numerator;
+	}
+
+	/**
+	 * @return the denominator
+	 */
+	public int getDenominator() {
+		return denominator;
+	}
+	
+	public static int gcd(int a, int b) //testing to simplify fractions but was having problems so it isnt implemented
+	{
+		return b == 0 ? a:gcd(b, a%b);
+	}
+}

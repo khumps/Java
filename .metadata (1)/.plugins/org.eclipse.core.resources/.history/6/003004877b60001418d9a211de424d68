@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+public class SortString
+	{
+	public static void sortStrings(ArrayList<String> a)
+		{
+		for(int inner = 0; inner < a.size(); inner++)
+			{
+			for(int outer = inner +1; outer < a.size(); outer++)
+				{
+				if(a.get(inner).compareTo(a.get(outer)) > 0)
+					{
+					a.set(outer, a.set(inner, a.get(outer)));
+/*					String temp = a.get(inner);
+					a.set(inner, a.get(outer));
+					a.set(outer, temp);		*/	
+				}
+				System.out.println(a);
+			}
+			
+		}
+	}
+	public static void main(String[] arrgs)
+	{
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("fadfasdfdsf");
+		a.add("afgshfshgfs");
+		a.add("afhsfdd");
+		a.add("gfshfsg");
+		a.add("zfdsfafads");
+		a.add("zadfsfdsfsd");
+		System.out.println(a);
+		sortStrings(a);
+		System.out.println(a);
+	}
+}

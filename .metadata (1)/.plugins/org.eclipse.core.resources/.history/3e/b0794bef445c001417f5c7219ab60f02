@@ -1,0 +1,42 @@
+import java.util.Scanner;
+public class SimulationTest
+{
+
+	public static void main(String[] args)
+	{
+		boolean again = true;
+		boolean isDouble;
+		Scanner input = new Scanner(System.in);
+		do
+		{
+
+			System.out.println("Enter the velocity of the projectile: ");
+
+			if (input.hasNextDouble())
+			{
+				double velocity = input.nextDouble();
+
+				if (velocity == 1)
+				{
+					again = true;
+					break;
+
+				}
+				else if (velocity == 2)
+				{
+					again = false;
+					break;
+				}
+				else
+					System.out.println("Not a valid Answer");
+			}
+			else
+			{
+				input.next();
+				System.out.println("Not a valid answer.");
+			}
+		}
+		while (true);
+	}
+
+}

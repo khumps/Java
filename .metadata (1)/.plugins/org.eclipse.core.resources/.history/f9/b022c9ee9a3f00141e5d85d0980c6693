@@ -1,0 +1,16 @@
+
+public class GCF {
+public GCF(double number1, double number2)
+{
+	
+}
+
+public GCF(int number1, int number2)
+{
+	
+}
+
+public int getGCF(int number1, int number2)
+{
+}
+}

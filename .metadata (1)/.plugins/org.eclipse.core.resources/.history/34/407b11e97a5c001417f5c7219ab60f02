@@ -1,0 +1,66 @@
+/*
+ * Tests out the factorial method in the LoopExamples class
+ * by finding the factorial of a number
+ */
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class FactorialTest {
+
+	public static void main(String[] arrgs) {
+		boolean again;
+		int start = 0;
+		Scanner input = new Scanner(System.in);
+		do{
+		do {
+
+			System.out.println("Enter a number to get the factorial for: ");
+
+			if (input.hasNextInt())
+			{
+				start = input.nextInt();
+			if (start >= 0)
+				break;
+				else {
+					input.next();
+					System.out.println("Cant find a factorial for that.");
+			}
+
+			} else {
+				input.next();
+				System.out.println("Cant find a factorial for that.");
+			}
+		} while (true);
+
+		BigInteger factorial = LoopExamples.factorial(start);
+		System.out.println(factorial);
+		
+		do
+		{
+			System.out.println("would you like to calculate another factorial? 1(Yes) or 2(No)");
+		if(input.hasNextInt())
+		{
+			if(input.nextInt() == 1)
+			{
+				again = true;
+				break;
+			}
+			else if(input.nextInt() == 2)
+			{
+				again = false;
+				break;
+			}
+			{
+				again = false;
+				break;
+			}
+		}
+		else
+		{
+			input.next();
+			System.out.println("Not a valid responce. Please try again.");
+		}
+		}while(true);
+		}while(again == true);
+	}
+}

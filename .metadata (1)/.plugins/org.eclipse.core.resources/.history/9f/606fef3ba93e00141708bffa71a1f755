@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class ATM {
+
+	public static void main(String[] args) {
+		BankAccount kevin = new BankAccount(1234, "kevin");
+		BankAccount khumps = new BankAccount(5000, 4321, "khumps");
+		Scanner input = new Scanner(System.in);
+		System.out.println("Welcome to the ATM. Please enter your Account Name  ");
+		BankAccount name = input.nextBankAccount();
+		
+		name.getBal();
+		
+	
+
+	}
+
+}

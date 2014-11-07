@@ -1,0 +1,9 @@
+
+public class BankTest {
+public static void main(String[] args){
+	BankAccount kevin = new BankAccount();
+	BankAccount khumps = new BankAccount(5000);
+	
+	kevin.deposit(500);
+}
+}

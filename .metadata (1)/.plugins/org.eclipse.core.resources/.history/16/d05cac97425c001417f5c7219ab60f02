@@ -1,0 +1,157 @@
+import java.util.Scanner;
+
+public class AreaCalculator
+{
+
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		double radius;
+		int sides;
+		double sideLength;
+		double method;
+		boolean again;
+		do
+		{
+			do
+			{
+				System.out
+						.println("Would you like to calculate the area with a radius(1) or a Side Length(2)? ");
+				if (input.hasNextInt())
+				{
+					method = input.nextInt();
+
+					if (method == 1 || method == 2)
+						break;
+
+					else
+					{
+						System.out.println("Not a valid answer please try again.");
+					}
+				}
+				else
+				{
+					input.next();
+					System.out.println("Not a valid answer please try again.");
+				}
+			}
+			while (true);
+
+			do
+			{
+
+				System.out.println("Enter the number of sides your shape has: ");
+
+				if (input.hasNextInt())
+				{
+					sides = input.nextInt();
+
+					if (sides > 2)
+						break;
+					else
+					{
+						System.out.println("Not a valid number of sides.");
+						input.next();
+					}
+				}
+
+				else
+				{
+
+					System.out.println("Not a valid number of sides.");
+					input.next();
+				}
+			}
+			while (true);
+
+			if (method == 1)
+			{
+				do
+				{
+
+					System.out.println("Enter the length of the radius of your shape: ");
+
+					if (input.hasNextDouble())
+					{
+						radius = input.nextDouble();
+
+						if (radius > 0)
+						{
+							break;
+
+						}
+					}
+					else
+					{
+						input.next();
+						System.out.println("Not a valid radius length.");
+					}
+				}
+				while (true);
+
+				System.out.println("This " + sides + " sided regular polygon with a radius of "
+						+ radius + " has an area of " + Polygon.getAreaR(radius, sides));
+			}
+			else
+			{
+
+				do
+				{
+					System.out.println("Enter the length of a side of your shape: ");
+
+					if (input.hasNextDouble())
+					{
+						sideLength = input.nextDouble();
+						if (sideLength > 0)
+						{
+							break;
+
+						}
+						else
+						{
+							input.next();
+							System.out.println("Not a valid radius length.");
+
+						}
+
+					}
+				}
+				while (true);
+				System.out.println("This " + (int) sides
+						+ " sided regular polygon with a Side Length of " + (int) sideLength
+						+ " has an area of " + Polygon.getAreaS(sideLength, sides));
+			}
+
+			do
+			{
+
+				System.out.println("Would you like to calculate the area of another shape? ");
+
+				if (input.hasNextDouble())
+				{
+					double answer = input.nextDouble();
+
+					if (answer == 1)
+					{
+						again = true;
+						break;
+
+					}
+					else
+						if (answer == 2)
+						{
+							again = false;
+							break;
+						}
+				}
+				else
+				{
+					input.next();
+					System.out.println("Not a valid answer.");
+				}
+			}
+			while (true);
+		}
+		while (again == true);
+	}
+}

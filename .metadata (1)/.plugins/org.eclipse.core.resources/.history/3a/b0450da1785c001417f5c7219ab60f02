@@ -1,0 +1,152 @@
+/*
+ *The methods in this class have various purposes.
+ *
+ *The first method factorial will return the factorial of the number start
+ *
+ *The second method printArea will print a chart of the area of rectangles from the smallest
+ *(minWidth * minLength) to the largest(maxWidth * maxHeight)
+ *
+ *The third method updateVelocity is a helper method for simulation
+ *it is simply the formula used for calculating the change in velocity 
+ *
+ *The fourth method updateHeight is a helper method for simulation
+ *it is simply the formula used for calculating the change in Height
+ *
+ *The fifth and final method simulation takes in an initial velocity (assuming initialHeight is 0)
+ *and simulates the trajectory of that object
+ *it updates its position every DELTAT(.01) seconds and prints its current position every second
+ *every second it outputs the current time in the simulation, the current height according to the formula
+ */
+import java.math.BigInteger;
+
+public class LoopExamples
+{
+	private static final double DELTAT = 0.01;// change in time between each
+												// check of the height
+	private static final double GRAVITY = 9.81;
+
+
+	public static BigInteger factorial(int start)// returns the factorial of an
+													// int as a BigInteger
+	{
+		if (start == 0)
+			return BigInteger.ONE;
+		String str = "" + start;
+		BigInteger factorial = new BigInteger(str);
+		BigInteger operator = new BigInteger(str);
+		operator.subtract(BigInteger.ONE);
+		while (start > 1)
+		{
+			operator = operator.subtract(BigInteger.ONE);
+			start--;
+			factorial = factorial.multiply(operator);
+
+		}
+
+		return factorial;
+	}
+
+
+	/*
+	 * Prints out the areas of rectangles with the sizes from minWidth *
+	 * minLength to maxWidth * maxLength(min MUST be less than or equal to the
+	 * max)
+	 */
+	public static void printArea(double minWidth, double maxWidth, double minLength,
+			double maxLength)
+	{
+		double tempA;
+		double tempB;
+		if (minWidth > maxWidth)
+		{
+			tempA = minWidth;
+			tempB = maxWidth;
+			minWidth = tempB;
+			maxWidth = tempA;
+		}
+		if (minLength > maxLength)
+		{
+			tempA = minLength;
+			tempB = maxLength;
+			minLength = tempB;
+			maxLength = tempA;
+		}
+		double startMinWidth = minWidth;
+		System.out.printf("%-10s %-10s %-10s %n", "length", "width", "area");
+		System.out.println("------------------------------");
+		for (; minLength < maxLength + 1; minLength++)
+		{
+			for (; minWidth < maxWidth + 1; minWidth++)
+			{
+				System.out.printf("%-10s %-10s %-10s %n", minLength, minWidth,
+						(minLength * minWidth)); // prints in pretty collumns
+				System.out.println("------------------------------");
+			}
+			minWidth = startMinWidth; // resets minWidth to repeat with other
+										// lengths
+		}
+	}
+
+
+	/*
+	 * Updates the velocity every DELTAT Seconds
+	 */
+	public static double updateVelocity(double currentVelocity)
+	{
+		return currentVelocity - (GRAVITY * DELTAT);
+	}
+
+
+	/*
+	 * Updates the Height every DELTAT Seconds
+	 */
+	public static double updateHeight(double currentHeight, double currentVelocity)
+	{
+		return currentHeight + (currentVelocity * DELTAT);
+	}
+
+
+	/*
+	 * Prints out a simulation of a projectile being shot straight up at
+	 * initialVelocity
+	 */
+	public static void simulation(double initialVelocity)
+	{
+		double time = 0;
+		double initialHeight = 0;
+		double currentHeight = initialHeight;
+		double currentVelocity = initialVelocity;
+		System.out.printf("%-6s %20s %18s %n", "Time", "Formula Height", "Simulation height");
+		System.out.printf("%-10.2f %-20.2f %-20.2f %n", time, initialVelocity, currentHeight);
+		do
+		{
+			for (int i = 0; i < 101; i++)
+			{
+				currentVelocity = updateVelocity(currentVelocity);
+				currentHeight = updateHeight(currentHeight, currentVelocity);
+			}
+			time++;
+			if (currentHeight > 0)
+				System.out.printf("%-10.2f %-20.2f %-20.2f %n", time, formulaHeight(currentVelocity, time),
+						simHeight(currentHeight, currentVelocity));
+
+		}
+		while (currentHeight > 0);
+	}
+	
+	public static double formulaHeight(double velocity, double time)
+	{
+		return -0.5 * GRAVITY * (time * time) + (velocity * time);
+	}
+	
+	public static double simHeight(double currentHeight, double currentVelocity)
+	{
+		return currentHeight + currentVelocity * DELTAT;
+	}
+
+
+	public static void main(String[] args)
+	{
+		simulation(100);
+	}
+}

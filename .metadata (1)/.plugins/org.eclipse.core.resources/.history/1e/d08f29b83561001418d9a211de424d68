@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+
+public class Statistics
+{
+	
+	public static double[] copyData(double[] data)
+	{
+		double[] dest = new double[data.length];
+		for(int i = 0; i < data.length; i++)
+		{
+			dest[i] = data[i];
+		}
+		return dest;
+	}
+	public static double[] sortData(double[] data)
+			{
+		for(int inner = 0; inner < data.length; inner++)
+			{
+			for(int outer = inner +1; outer < data.length; outer++)
+				{
+				if(a[inner] > a[outer])
+					{
+					int temp = a[inner];
+					a[inner] = a[outer];
+					a[outer] = temp;
+				}
+			}
+			
+		}
+	}
+	
+    public static String arrayToString(double[] a){
+	String s = "";
+	for(double n: a)
+		s += n + " ";
+	return s;
+}
+	
+	public static void main(String[] args)
+	{
+		double[] test = {1,2,3,4,5};
+		double[] copy = copyData(test);
+		System.out.println(arrayToString(test));
+		System.out.println(arrayToString(copy));
+	}
+}
